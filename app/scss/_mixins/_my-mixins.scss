@@ -1,0 +1,376 @@
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}
+// @mixin stroke($stroke, $color) {
+//   text-shadow: stroke($stroke, $color);
+// }
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin clear_fix() {
+  clear: both;
+  &:before, &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+@mixin popup_style() {
+  background: $white;
+  border: 1px solid $grayd;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.13);
+}
+@mixin anim_underline($height, $color) {
+  position: relative;
+  display: inline-block;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 105%;
+    left: 0px;
+    display: block;
+    width: 0px;
+    height: $height;
+    background-color: $color;
+    border-radius: 2px;
+    transition: width .3s ease;
+  }
+  &:hover, &:focus, &active {
+    text-decoration: none;
+    outline: none;
+  }
+  &:hover:after, &:focus:after, &active:after{
+    width: 100%;
+  }
+}
+@mixin anim_underline_reverse($height, $color) {
+  position: relative;
+  display: inline-block;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 105%;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    border-radius: 2px;
+    transition: width .3s ease;
+  }
+  &:hover, &:focus, &active {
+    text-decoration: none;
+    outline: none;
+  }
+  &:hover:after, &:focus:after, &active:after{
+    width: 0px;
+  }
+}
+
+@mixin text_hide() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  line-height: 0;
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+@mixin clear_ul_style() {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+@mixin sr_only() {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+  &:focus{
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
+}
+@mixin loader() {
+  position: relative;
+  z-index: 9999999;
+  &:before{
+    content: '';
+    display: block;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 9999999;
+  }
+  &:after{
+    content: '';
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    //transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 8px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    z-index: 1001;
+    animation: spin 1s linear infinite;
+    z-index: 9999999;
+  }
+}
+@mixin custom_gutter($width){
+  margin-right: -$width/2;
+  margin-left: -$width/2;
+  & > .col,
+  & > [class*="col-"] {
+    padding-right: $width/2 !important;
+    padding-left: $width/2 !important;
+    // padding-right: $width;
+    // padding-left: $width;
+  }
+}
+@mixin custom_slider_gutter($width){
+  margin-right: -$width;
+  margin-left: -$width;
+  overflow: hidden;
+  .slick-slide{
+    padding-right: $width;
+    padding-left: $width;
+  }
+}
+@mixin slick_margin($width){
+  overflow: hidden;
+  .slick-list{
+    margin-left: -$width;
+  }
+  .slick-slide{
+    margin-left: $width;
+  }
+}
+
+@mixin hover(){
+  &:hover, &:active, &:focus{
+    outline: none;
+    @content;
+  }
+}
+@mixin no_marg_first_last(){
+  &:first-child{
+    margin-left: 0px;
+  }
+  &:last-child{
+    margin-right: 0px;
+  }
+}
+
+@mixin custom_breakpoint_min($width){
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+@mixin custom_breakpoint_max($width){
+  @media (max-width: #{$width}) {
+    @content;
+  }
+}
+@mixin custom_breakpoint_min_max($min_width, $max_width){
+  @media (min-width: #{$min_width}) and (max-width: #{$max_width}) {
+    @content;
+  }
+}
+@mixin if_support_flex(){
+  @supports (display: flex) or (display: -webkit-box){
+    @content;
+  }
+}
+
+
+//=============================
+//========== v1.1 =============
+//=============================
+@function size($size) {
+  //@return #{$size / $def-font-size * $font-ratio}rem; // light
+  @return #{round($size / $def-font-size * $font-ratio * 1000) / 1000}rem; // strong
+}
+@mixin fz($width){
+  font-size: size($width);
+}
+@mixin adapt-fz($pcSize, $mobSize) {
+  $addSize: $pcSize - $mobSize;
+  $maxWidth: $site-width - 320;
+  font-size: calc(#{$mobSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth}));
+}
+// alias
+@mixin mbu($width){
+  @include media-breakpoint-up($width){
+    @content;
+  }
+}
+@mixin mbd($width){
+  @include media-breakpoint-down($width){
+    @content;
+  }
+}
+@mixin сbu($width){
+  @include custom_breakpoint_min($width){
+    @content;
+  }
+}
+@mixin сbd($width){
+  @include custom_breakpoint_max($width){
+    @content;
+  }
+}
+@mixin сbdu($min_width, $max_width){
+  @include custom_breakpoint_min_max($min_width, $max_width){
+    @content;
+  }
+}
+@mixin mbi5(){
+  @include custom_breakpoint_max(370px){
+    @content;
+  }
+}
+
+
+//=============================
+//========= v1.1.1 ============
+//=============================
+@mixin loader_block() {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  transition: opacity .3s ease, visibility .3s ease;
+  visibility: visible;
+  &.off{
+    opacity: 0;
+    visibility: hidden;
+  }
+  &:before{
+    content: '';
+    display: block;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+  }
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    //transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 8px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    z-index: 1001;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+  }
+}
+@mixin loader_block_v2() {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 51.9 12' style='enable-background:new 0 0 51.9 12;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%232c7fc3;%7D %3C/style%3E%3Ccircle class='st0' cx='6' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.1' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3Ccircle class='st0' cx='26' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.2' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3Ccircle class='st0' cx='46' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.3' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E%0A");
+  background-size: 50% 50%;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  transition: opacity .3s ease, visibility .3s ease;
+  visibility: visible;
+  &.off{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@mixin arrow($width, $color, $type){
+  width: 0;
+  height: 0;
+  @if $type == top {
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-bottom: $width solid $color;
+  } @else if $type == right {
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+  } @else if $type == left {
+    border-top: $width solid transparent;
+    border-bottom: $width solid transparent;
+    border-left: $width solid $color;
+  } @else {
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    border-top: $width solid $color;
+  }
+}
+@mixin flex($width){
+  flex: 1 1 $width;
+  max-width: $width;
+}
+

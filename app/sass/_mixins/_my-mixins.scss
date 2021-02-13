@@ -1,0 +1,242 @@
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}
+// @mixin stroke($stroke, $color) {
+//   text-shadow: stroke($stroke, $color);
+// }
+@mixin clearfix() {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@mixin clear_fix() {
+  clear: both;
+  &:before, &:after{
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+@mixin popup_style() {
+  background: $white;
+  border: 1px solid $grayd;
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.13);
+}
+@mixin anim_underline($height, $color) {
+  position: relative;
+  display: inline-block;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 105%;
+    left: 0px;
+    display: block;
+    width: 0px;
+    height: $height;
+    background-color: $color;
+    border-radius: 2px;
+    transition: width .3s ease;
+  }
+  &:hover, &:focus, &active {
+    text-decoration: none;
+    outline: none;
+  }
+  &:hover:after, &:focus:after, &active:after{
+    width: 100%;
+  }
+}
+@mixin anim_underline_reverse($height, $color) {
+  position: relative;
+  display: inline-block;
+  &:after{
+    content: '';
+    position: absolute;
+    top: 105%;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: $height;
+    background-color: $color;
+    border-radius: 2px;
+    transition: width .3s ease;
+  }
+  &:hover, &:focus, &active {
+    text-decoration: none;
+    outline: none;
+  }
+  &:hover:after, &:focus:after, &active:after{
+    width: 0px;
+  }
+}
+@mixin img_shadow() {
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.65) !important;
+}
+@mixin text_hide() {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  line-height: 0;
+}
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+@mixin clear_ul_style() {
+  list-style: none;
+  padding-left: 0px;
+  margin-bottom: 0px;
+}
+@mixin sr_only() {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+  &:focus{
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    display: block;
+    font-size: 1em;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000; /* Above WP toolbar. */
+  }
+}
+@mixin loader() {
+  position: relative;
+  z-index: 9999999;
+  &:before{
+    content: '';
+    display: block;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.4);
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    z-index: 9999999;
+  }
+  &:after{
+    content: '';
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    //transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 8px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    z-index: 1001;
+    animation: spin 1s linear infinite;
+    z-index: 9999999;
+  }
+}
+@mixin custom_gutter($width){
+  margin-right: -$width/2;
+  margin-left: -$width/2;
+  & > .col,
+  & > [class*="col-"] {
+    padding-right: $width/2 !important;
+    padding-left: $width/2 !important;
+    // padding-right: $width;
+    // padding-left: $width;
+  }
+}
+@mixin custom_slider_gutter($width){
+  margin-right: -$width;
+  margin-left: -$width;
+  overflow: hidden;
+  .slick-slide{
+    padding-right: $width;
+    padding-left: $width;
+  }
+}
+@mixin slick_margin($width){
+  overflow: hidden;
+  .slick-list{
+    margin-left: -$width;
+  }
+  .slick-slide{
+    margin-left: $width;
+  }
+}
+
+@mixin hover(){
+  &:hover, &:active, &:focus{
+    outline: none;
+    @content;
+  }
+}
+@mixin no_marg_first_last(){
+  &:first-child{
+    margin-left: 0px;
+  }
+  &:last-child{
+    margin-right: 0px;
+  }
+}
+@mixin bold_heading_text(){
+  font-size: 24px;
+  font-weight: 600;
+  color: $text;
+}
+
+@mixin custom_breakpoint_min($width){
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}
+@mixin custom_breakpoint_max($width){
+  @media (max-width: #{$width}) {
+    @content;
+  }
+}
+@mixin custom_breakpoint_min_max($min_width, $max_width){
+  @media (min-width: #{$min_width}) and (max-width: #{$max_width}) {
+    @content;
+  }
+}
+@mixin if_support_flex(){
+  @supports (display: flex) or (display: -webkit-box){
+    @content;
+  }
+}

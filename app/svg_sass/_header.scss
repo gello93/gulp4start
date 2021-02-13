@@ -1,0 +1,15 @@
+//------------------------------------------------------------layout
+.header {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	height: $height_header;
+	width: 100%;
+	
+	will-change: transform;
+
+	@include z-index(header);
+}
+
+//------------------------------------------------------------layout###

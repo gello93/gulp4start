@@ -1,0 +1,938 @@
+@import "vars";
+@import "fonts";
+@import "libs";
+@import "../scss/_mixins/_my-mixins.scss";
+
+::placeholder {
+	color: $text;
+}
+
+::selection {
+	background-color: $accent;
+	color: #fff;
+}
+input, textarea, select { //Iphone style
+  appearance: none;
+  border-radius: 0;
+}
+a{
+	color: $accent;
+}
+
+html{
+	font-size: $def-font-size;
+}
+body {
+	position: relative;
+	min-width: 320px;
+	position: relative;
+	line-height: 1.5;
+	font-family: $default-font;
+	font-weight: 200;
+	overflow-x: hidden;
+	color: $text;
+	&.loading{
+		@include loader();
+	}
+	&.stop-scrolling{
+		height: 100%;
+		overflow: hidden;
+	}
+}
+
+h1, .h1{
+	@include fz(32px);
+	font-weight: 300;
+	@include media-breakpoint-down(md){
+		@include fz(24px);
+	}
+	@include media-breakpoint-down(sm){
+		@include fz(19px);
+	}
+	&.top-n{
+		margin-top: 0px;
+	}
+}
+.h3{
+	@include fz(19px);
+	font-weight: 600;
+}
+.heading{
+	margin: 30px 0;
+	@include fz(24px);
+	text-transform: uppercase;
+	text-align: center;
+	@include media-breakpoint-down(md){
+		font-size: 1.571rem;
+	}
+	&__sm{
+		margin: 15px 0;
+		@include fz(18px);
+		@include mbd(md){
+			@include fz(16px);
+		}
+	}
+	&__lg{
+		margin: 15px 0;
+		@include fz(30px);
+		@include mbd(md){
+			@include fz(20px);
+		}
+	}
+	&__mtn{
+		margin-top: 0px;
+	}
+	&__up{
+		text-transform: uppercase;
+	}
+	&__left{
+		text-align: left;
+	}
+	&__center{
+		text-align: center;
+	}
+	&__bold{
+		font-weight: bold;
+	}
+}
+
+.h{
+	@include fz(24px);
+	font-weight: bold;
+}
+.gray-bg{
+	background: #ddd;
+}
+.text-up, .uppercase{
+	text-transform: uppercase;
+}
+.text-low, .lowercase{
+	text-transform: lowercase;
+}
+.text-underline, .underline{
+	text-decoration: underline;
+}
+.text-right{
+	text-align: right;
+}
+.text-left{
+	text-align: left;
+}
+.text-center{
+	text-align: center;
+}
+.hidden{
+	display: none;
+}
+.lowercase{
+	text-transform: lowercase;
+}
+.img-responsive{
+	display: block;
+	max-width: 100%;
+}
+ul{
+	list-style: none;
+	padding-left: 0px;
+	margin-bottom: 0px;
+}
+strong{
+	font-weight: 700;
+}
+
+.texteditor{
+	font-size: 1.143rem;
+	h1{
+		//font-size: size(32px);
+		@include fz(32px);
+		font-weight: bold;
+		margin-bottom: 20px;
+		@include media-breakpoint-down(sm){
+			@include fz(24px);
+		}
+	}
+	h2{
+		margin: $grid-gutter-width 0;
+		@include fz(24px);
+		font-weight: normal;
+		@include media-breakpoint-down(sm){
+			@include fz(19px);
+		}
+	}
+	h3{
+		margin: $grid-gutter-width/1.5 0;
+		@include fz(19px);
+		font-weight: normal;
+		//font-weight: bold;
+		@include media-breakpoint-down(sm){
+			@include fz(16px);
+		}
+	}
+	p{
+		font-size: 1.143rem;
+		line-height: 1.5em;
+		margin-bottom: $grid-gutter-width;
+		@include custom_breakpoint_max(1700px){
+			margin-bottom: $grid-gutter-width/1.5;
+		}
+		&:last-child{
+			margin-bottom: 0px;
+		}
+	}
+	ul, ol{
+		margin: $grid-gutter-width 0 !important;
+		padding-left: 2.5rem;
+		margin-bottom: 1rem;
+	}
+	ul{
+		list-style: disc outside; //inside
+		list-style: none;
+		padding: 0px;
+		li{
+			margin-top: 11px;
+			margin-bottom: 11px;
+			position: relative;
+			padding-left: 15px;
+			line-height: 1.3em;
+			&:before{
+				content: '';
+				display: block;
+				width: 4px;
+				height: 4px;
+				border-radius: 50%;
+				background: $accent;
+				position: absolute;
+				left: 0px;
+				top: 8px;
+			}
+		}
+	}
+	.table-wrp{
+		overflow-x: auto;
+		max-width: 100%;
+	}
+	table{
+		border: 1px solid $grayl;
+		margin: 25px 0;
+		th{
+			padding: 15px;
+			color: $text;
+			background: #F3F6F7;
+		}
+		td{
+			padding: 7px 15px;
+			@include mbd(md){
+				@include fz(12px);
+				padding: 3px 5px !important;
+			}
+		}
+		th, td{
+			border-color: $grayl !important;
+			@include mbd(md){
+				@include fz(12px);
+				padding: 10px 5px !important;
+			}
+		}
+	}
+	img{
+		max-width: 100%;
+		height: auto;
+		vertical-align: bottom;
+	}
+}
+
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"],
+input[type="password"],
+input[type="number"], 
+input[name="password"],
+textarea, 
+.input-select{
+	width: 100%;
+	margin-bottom: $gutter/1.5;
+	padding: 14px 30px;
+	border: 1px solid $gray;
+	outline: none;
+	font-size: 0.95rem;
+	color: $text;
+	&::placeholder{
+		color: $textl;
+	}
+	&:focus{
+		border-color: $accent;
+	}
+	&:focus:required:invalid, &.wpcf7-not-valid, &.empty_field{
+		border-color: $red;
+		&::placeholder{
+			color: red;
+		}
+	}
+	&:required:valid{
+		border-color: green;
+	}
+	&.icon-input{
+		padding-left: 60px;
+	}
+	&[type="submit"], &[type="checkbox"], &[type="radio"]{
+		width: auto;
+	}
+	&.btn{
+		display: inline-block;
+		width: auto;
+	}
+	&.error_input{
+		border-color: red;
+		&::placeholder{
+			color: red;
+		}
+		& + .input-group-addon i{
+			color: red !important;
+		}
+	}
+}
+textarea{
+	min-height: 88px;
+}
+.select-wrp{
+	display: block;
+	position: relative;
+	&:after{
+		content: url("data:image/svg+xml,%3Csvg viewBox='0 0 129 129' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cpath d='m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z'/%3E%3C/svg%3E");
+		display: block;
+		width: 12px;
+		height: 12px;
+		margin-top: -8px;
+		position: absolute;
+		top: 50%;
+		right: 10px;
+		opacity: .7;
+	}
+	select{
+		border: 1px solid $grayd;
+		width: 100%;
+		display: block;
+		padding: 7px 10px;
+		background: #fff;
+		height: 39px;
+		margin: 0px;
+		border-radius: 0px !important;
+		outline: none;
+		appearance: none;
+		&:focus{
+			border-color: $accent;
+		}
+	}
+}
+//============================= \\
+// Alt radio and checkbox style  ))
+//============================= //
+// <div class="radio-set">
+// 	<input type="radio" id="id-1">
+// 	<label for="id-1">
+// 	  <span class="radio-alt"></span>
+// 	  <span class="name">Text</span>
+// 	</label>
+// </div>
+
+// <div class="stylled-checkbox">
+// 	<input type="checkbox" id="id-2" name="ch" value="1">
+// 	<label class="d-inline-block" for="id-2"><span>Текст</span></label>
+// </div>
+
+// <div class="stylled-radio">
+// 	<input type="radio" id="id-3" name="ch" value="1">
+// 	<label class="d-inline-block" for="id-3"><span>Текст</span></label>
+// </div>
+
+.stylled-checkbox{
+	input{
+		display: none;
+		&:checked + label{
+			&:before{
+				background: $accent;
+			}
+			&:after{
+				transform: scale(0.7);
+			}
+		}
+	}
+	label{
+		display: inline-block;
+		position: relative;
+		padding: 0px 0px 0px 30px;
+		margin: 0px;
+		&:before, &:after{
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 0px;
+			display: block;
+		}
+		&:before{
+			width: 18px;
+			height: 18px;
+			border-radius: 2px;
+			border: 1px solid $grayz;
+			background: $white;
+			transition: background .3s ease;
+		}
+		&:after{
+			content: '';
+			width: 18px;
+			height: 18px;
+			transform: scale(0);
+			transition: transform .3s ease;
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Cpath fill='%23fff' d='M.3 14c-.2-.2-.3-.5-.3-.7s.1-.5.3-.7l1.4-1.4a1 1 0 0 1 1.4 0l.1.1 5.5 5.9c.2.2.5.2.7 0L22.8 3.3h.1a1 1 0 0 1 1.4 0l1.4 1.4c.4.4.4 1 0 1.4l-16 16.6a1 1 0 0 1-.7.3 1 1 0 0 1-.7-.3L.5 14.3.3 14z'/%3E%3C/svg%3E");
+		}
+		@include hover(){
+			&:before{
+				background: $grayl;
+			}
+		}
+	}
+}
+.stylled-radio{
+	input{
+		display: none;
+		&:checked + label{
+			&:before{
+				background: $accent;
+			}
+			&:after{
+				background: $white;
+				transform: scale(-0.3);
+			}
+		}
+	}
+	label{
+		display: inline-block;
+		position: relative;
+		padding: 0px 0px 0px 30px;
+		margin: 0px;
+		&:before, &:after{
+			content: '';
+			position: absolute;
+			top: 2px;
+			left: 0px;
+			display: block;
+		}
+		&:before{
+			width: 18px;
+			height: 18px;
+			border: 1px solid $grayz;
+			border-radius: 50px;
+			background: $white;
+			transition: background .3s ease;
+		}
+		&:after{
+			width: 18px;
+			height: 18px;
+			border-radius: 50px;
+			background: $white;
+			transform: scale(-0.9);
+			transition: transform .3s ease;
+		}
+		@include hover(){
+			&:after{
+				background: $grayl;
+			}
+		}
+	}
+}
+.radio-set{
+	input{
+		display: none;
+		&:checked + label{
+			.radio-alt{
+				&:before{
+					background: $accent;
+				}
+				&:after{
+					background: $white;
+					transform: scale(-0.3);
+				}
+			}
+		}
+	}
+	label{
+		.radio-alt{
+			display: inline-block;
+			position: relative;
+			width: 18px;
+			height: 18px;
+			margin-right: 10px;
+			&:before, &:after{
+				content: '';
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				display: block;
+			}
+			&:before{
+				width: 100%;
+				height: 100%;
+				border: 1px solid $grayz;
+				border-radius: 50px;
+				background: $white;
+				transition: background .3s ease;
+			}
+			&:after{
+				width: 100%;
+				height: 100%;
+				border-radius: 50px;
+				background: $white;
+				transform: scale(-0.9);
+				transition: transform .3s ease;
+			}
+		}
+		@include hover(){
+			.radio-alt{
+				&:after{
+					background: $grayl;
+				}
+			}
+		}
+	}
+}
+//  // =============================
+// ((  Alt radio and checkbox style 
+//  \\ =============================
+
+
+.btn{
+	display: inline-block;
+	padding: 10px 30px;
+	font-size: 1.143rem;
+	line-height: 1.2em;
+	@include hover(){
+		outline: none;
+		text-decoration: none;
+	}
+	svg{
+		width: 11px;
+		height: 11px;
+		margin-right: 3px;
+	}
+	&__svg-right{
+		svg{
+			margin-right: 0px;
+			margin-left: 3px;
+		}
+	}
+	&__accent{
+		display: inline-block;
+		color: #fff;
+		background: $accent;
+		@include hover(){
+			background: $accentd;
+		}
+	}
+	&__accent2{
+		padding: 15px 38px;
+		display: inline-block;
+		color: #fff;
+		font-weight: 700;
+		background: $accent2d;
+		@include hover(){
+			color: $accent;
+			background: $accent2d;
+		}
+	}
+	&__normal{
+		font-weight: normal;
+	}
+	&__height{
+		padding-top: 11px;
+		padding-bottom: 11px;
+	}
+	&__low{
+		text-transform: none;
+	}
+	&__up{
+		text-transform: uppercase;
+	}
+	&__wide{
+		width: 100%;
+		text-align: center;
+	}
+	&__size_sm{
+		padding: 3px 10px 2px;
+	}
+	&__size_lg{
+		font-size: 1.1rem;
+		padding: 12px 47px;
+	}
+	&__invers{
+		background: $white;
+		box-shadow: 0px 4px 7px -4px rgba(0, 0, 0, 0.50), 0px 0px 0px 2px $accent inset !important;
+		color: $accent;
+		box-shadow: none;
+		@include hover(){
+			outline: none;
+			color: #fff;
+			background: $accent;
+			box-shadow: 0px 4px 7px -4px rgba(0, 0, 0, 0.50);
+		}
+	}
+	&__invers2{
+		background: $white;
+		box-shadow: 0px 4px 7px -4px rgba(0, 0, 0, 0.50), 0px 0px 0px 1px $accent2d inset !important;
+		color: $accent2d;
+		box-shadow: none;
+		text-align: center;
+		font-weight: normal;
+		svg{
+			fill: $accent2d;
+		}
+		@include hover(){
+			outline: none;
+			color: $white;
+			background: $accent2d;
+			box-shadow: 0px 4px 7px -4px rgba(0, 0, 0, 0.50);
+			svg{
+				fill: $white;
+			}
+		}
+		&__active{
+			outline: none;
+			color: $white;
+			background: $accent2d;
+			box-shadow: 0px 4px 7px -4px rgba(0, 0, 0, 0.50);
+			svg{
+				fill: $white;
+			}
+		}
+		&__invers-no-shaddow{
+			box-shadow: 0px 0px 0px 1px $accent2d inset !important;
+		}
+	}
+	&__accent-b{
+		background: $accent2d;
+	}
+}
+
+a, button, input{
+	outline: none !important;
+}
+
+.slick-slide{
+	.item{
+		display: block !important; //Убирает странный отступ внизу
+	}
+}
+.slick-slider{
+	opacity: 0;
+	&.slick-initialized{
+		opacity: 1;
+	}
+}
+.slick-disable-center{
+	.slick-track{
+		@include media-breakpoint-up(md){
+			margin-left: 0px;
+			margin-right: 0px;
+		}
+	}
+}
+
+img.lazy{
+	width: 100%;
+	height: auto;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 51.9 12' style='enable-background:new 0 0 51.9 12;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23A1C4FD;%7D %3C/style%3E%3Ccircle class='st0' cx='6' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.1' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3Ccircle class='st0' cx='26' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.2' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3Ccircle class='st0' cx='46' cy='6' r='6'%3E%3Canimate accumulate='none' additive='replace' attributeName='opacity' begin='0.3' calcMode='linear' dur='1s' fill='remove' repeatCount='indefinite' restart='always' values='0;1;0'%3E%3C/animate%3E%3C/circle%3E%3C/svg%3E%0A");
+	background-size: 50% 50%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	&.loaded{
+		width: auto;
+		max-width: 100%;
+		background: none;
+		background-size: auto;
+	}
+}
+
+
+.has-child{
+	& > ul{
+		padding-left: 20px;
+		//display: none
+		max-height: 0;
+		overflow-y: hidden;
+		transition: max-height .3s ease;
+	}
+	&.active{
+		& > ul{
+			//display: block
+			max-height: 700px;
+		}
+	}
+}
+
+.alert{
+	position: relative;
+	margin: 10px 0;
+	padding: 8px 18px;
+	font-size: 1rem;
+	background: #ffffe0;
+	br, .close{
+		display: none;
+	}
+	p{
+		margin-bottom: 0px;
+	}
+	&-arrow{
+		&:before{
+			content: '';
+			position: absolute;
+			left: 5%;
+			bottom: 100%;
+			width: 0;
+			height: 0;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid $accentd;
+		}
+	}
+	&-to-top{
+		margin-top: -10px;
+	}
+	&-yellow{
+		background: #ffffe0;
+	}
+	&-red, &-danger{
+		color: #fff;
+		background: $accentd;
+	}
+}
+
+.site-block{
+	margin-top: $section-mg;
+	margin-bottom: $section-mg;
+	@include media-breakpoint-down(sm){
+		margin-top: 15px;
+		margin-bottom: 15px;
+	}
+}
+.wrapper{
+	max-width: $site-width;
+	margin: 0 auto;
+	// @include custom_breakpoint_min($site-lg-breakpoint){ //Другая ширина для больших монитовров
+	// 	max-width: $site-lg-width
+	// }
+}
+
+//======================================================================================
+//======================================================================================
+
+
+
+//======================================================================================
+//======================================================================================
+
+// css scroll style
+.site-scroll, .scrollblock{
+	overflow: auto;
+	padding-right: 15px;
+	margin-right: -15px;
+	scrollbar-width: thin;
+	scrollbar-color: $accent $grayz;
+
+	&::-webkit-scrollbar {
+	  width: 4px;
+	}
+	&::-webkit-scrollbar-track {
+		border-radius: 0px;
+	  background: $grayz;
+	}
+	&::-webkit-scrollbar-thumb {
+	  background-color: $accent;
+	  border-radius: 0px;
+	  border: 0px solid $grayz;
+	}
+}
+
+// ---------------- MODALS  >> ----------------
+.mfp-bg{
+	opacity: 0.4 !important;
+}
+.modal{
+	position: relative;
+	background: $white;
+	padding: 0px 0px;
+	max-width: 505px;
+	width: auto;
+	text-align: left;
+	margin: 20px auto;
+	border-radius: 4px;
+	overflow: hidden;
+	&_size_sm-popup{
+		max-width: 485px;
+	}
+	&_size_lg-modal{
+		max-width: 1024px;
+	}
+	.mfp-close{
+		color: #fff;
+		opacity: 1;
+		transition: transform .3s ease;
+		@include hover(){
+			transform: scale(1.2);
+		}
+	}
+	&__mod-header{
+		padding: 10px 40px;
+		margin-bottom: 30px;
+		text-align: center;
+		background: $accent;
+		color: #fff;
+		font-weight: 600;
+		font-size: 1.15rem;
+		text-transform: uppercase;
+	}
+	&__mod-content{
+		padding-left: 20px;
+		padding-right: 20px;
+		.item{
+			margin-bottom: 8px;
+			input, textarea{
+				margin-bottom: 0px;
+			}
+			.label-col{
+				display: flex;
+				align-items: center;
+				label{
+					display: inline-block;
+					margin-bottom: 0px;
+				}
+				@include media-breakpoint-down(md){
+					display: none;
+				}
+			}
+		}
+	}
+	&__mod-footer{
+		padding: 15px 20px 20px;
+		.notify{
+			margin-top: 15px;
+			padding: 0 15px;
+			font-size: .85rem;
+			line-height: 1.4em;
+		}
+	}
+}
+.mfp-zoom-in{
+	.modal{
+		opacity: 0;
+		transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out;
+		transform: translateY(-100px) scale(0.95);
+	}
+	&.mfp-bg{
+		opacity: 0;
+		transition: transform 0.4s ease-out, opacity 0.3s ease-in-out;
+	}
+	/* animate in */
+	&.mfp-ready{
+		.modal{
+			opacity: 1;
+			transform: translateY(0) scale(1);
+		}
+		&.mfp-bg{
+			opacity: 0.8;
+		}
+	}
+	/* animate out */
+	&.mfp-removing{
+		.modal{
+			transform: translateY(-100px) scale(0.95);
+			opacity: 0;
+		}
+	}
+}
+/* =transition */
+.mfp-gallery-zoom-in{
+	.mfp-figure, 
+	.mfp-iframe-holder 
+	.mfp-iframe-scaler{
+		opacity: 0;
+		transition: all 0.3s ease-out;
+		transform: scale(0.95);
+		transform-style: preserve-3d;
+	}
+	.mfp-figure{
+		opacity: 0;
+	}
+	.mfp-iframe-scaler{
+		overflow: visible; /*so the close button is shown*/
+	}
+	&.mfp-zoom-out-cur { 
+		cursor: auto;
+		.mfp-image-holder .mfp-close { 
+			cursor: pointer; 
+		}
+	}
+	&.mfp-bg,
+	.mfp-preloader{
+		opacity: 0;
+		transition: all 0.3s ease-out;
+	}
+	&.mfp-image-loaded .mfp-figure,
+	&.mfp-ready .mfp-iframe-holder .mfp-iframe-scaler{
+		opacity: 1;
+		transform: scale(1);
+		transform-style: preserve-3d;
+	}
+	&.mfp-ready.mfp-bg,
+	&.mfp-ready .mfp-preloader {
+		opacity: 0.8;
+	}
+	&.mfp-removing .mfp-figure, 
+	&.mfp-removing .mfp-iframe-holder .mfp-iframe-scaler{
+		transform: scale(0.95);
+		transform-style: preserve-3d;
+		opacity: 0;
+	}
+	&.mfp-removing.mfp-bg,
+	&.mfp-removing .mfp-preloader {
+		opacity: 0;
+	}
+	.mfp-preloader{
+		@include loader_block();
+	}
+}
+// ---------------- >> MODALS ----------------
+
+//-------------- ANIMATION -----------------
+@keyframes mfp_gallery_open {
+  0%   {
+  	opacity: 0;
+  	transform: translateX(-10%);
+  }
+  100% {
+  	opacity: 1;
+  	transform: translateX(10%);
+  }
+}
+
+@keyframes mfp_gallery_close {
+  0%   {opacity: 1;}
+  100% {opacity: 0;}
+}
+@keyframes spin{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin_reverse{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(-360deg);
+  }
+}
+//-------------- ANIMATION -----------------

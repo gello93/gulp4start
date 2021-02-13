@@ -1,0 +1,347 @@
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  html:before, html:after, body:before, body:after, div:before, div:after, span:before, span:after, object:before, object:after, iframe:before, iframe:after,
+  h1:before,
+  h1:after, h2:before, h2:after, h3:before, h3:after, h4:before, h4:after, h5:before, h5:after, h6:before, h6:after, p:before, p:after, blockquote:before, blockquote:after, pre:before, pre:after,
+  abbr:before,
+  abbr:after, address:before, address:after, cite:before, cite:after, code:before, code:after,
+  del:before,
+  del:after, dfn:before, dfn:after, em:before, em:after, img:before, img:after, ins:before, ins:after, kbd:before, kbd:after, q:before, q:after, samp:before, samp:after,
+  small:before,
+  small:after, strong:before, strong:after, var:before, var:after,
+  b:before,
+  b:after, i:before, i:after,
+  dl:before,
+  dl:after, dt:before, dt:after, dd:before, dd:after, ol:before, ol:after, ul:before, ul:after, li:before, li:after,
+  fieldset:before,
+  fieldset:after, form:before, form:after, label:before, label:after, legend:before, legend:after,
+  article:before,
+  article:after, aside:before, aside:after, canvas:before, canvas:after, details:before, details:after, figcaption:before, figcaption:after, figure:before, figure:after,
+  footer:before,
+  footer:after, header:before, header:after, hgroup:before, hgroup:after, menu:before, menu:after, nav:before, nav:after, section:before, section:after, summary:before, summary:after,
+  time:before,
+  time:after, mark:before, mark:after, audio:before, audio:after, video:before, video:after, button:before, button:after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+
+sub,
+sup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  background: transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  sub:before, sub:after,
+  sup:before,
+  sup:after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+
+a:before, a:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  background: transparent; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ol, ul, li {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: none; }
+
+q:before, q:after {
+  content: none; }
+
+:focus {
+  outline: 0; }
+
+input[type="text"], textarea {
+  -webkit-appearance: none; }
+  input[type="text"]::-ms-clear, textarea::-ms-clear {
+    display: none; }
+
+input,
+textarea {
+  border-radius: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+  input::-webkit-input-placeholder,
+  textarea::-webkit-input-placeholder {
+    color: #000; }
+  input::-moz-placeholder,
+  textarea::-moz-placeholder {
+    color: #000; }
+  input:-ms-input-placeholder,
+  textarea:-ms-input-placeholder {
+    color: #000; }
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    color: transparent; }
+  input:focus::-moz-placeholder,
+  textarea:focus::-moz-placeholder {
+    color: transparent; }
+  input:focus:-ms-input-placeholder,
+  textarea:focus:-ms-input-placeholder {
+    color: transparent; }
+
+textarea {
+  resize: none; }
+
+ins {
+  text-decoration: none; }
+
+del {
+  text-decoration: line-through; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  word-wrap: break-word; }
+
+html {
+  height: 100%;
+  font: 400 calc(100vw / 1920 * 10)/1.33 sans-serif; }
+
+body {
+  position: relative;
+  height: 100%;
+  font-size: 1.6rem;
+  color: #000;
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #fff; }
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+  overflow: hidden; }
+
+.base {
+  position: relative;
+  padding: 10rem 0 10rem; }
+
+a {
+  text-decoration: none;
+  color: #4aa3df; }
+  a:hover, a:focus {
+    text-decoration: underline; }
+
+.elements_list {
+  padding: 3rem; }
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10rem;
+  width: 100%;
+  will-change: transform;
+  z-index: 100; }
+
+.footer {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 10rem;
+  will-change: transform; }
+
+.form_field.default_mod {
+  display: block;
+  width: 100%;
+  height: 4rem;
+  padding: 0 2rem;
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  color: #000;
+  -webkit-box-shadow: inset 0 0 0 1px #ccc;
+          box-shadow: inset 0 0 0 1px #ccc;
+  border: none;
+  border-radius: 0.5rem; }
+  .form_field.default_mod::-webkit-input-placeholder {
+    color: #000; }
+  .form_field.default_mod::-moz-placeholder {
+    color: #000; }
+  .form_field.default_mod:-ms-input-placeholder {
+    color: #000; }
+
+.form_field.default_mod:focus {
+  -webkit-box-shadow: 0 0 0 1px #000;
+          box-shadow: 0 0 0 1px #000; }
+
+.form_cell.hidden_field {
+  display: none; }
+
+.form_cell_title.hline_hide_mod {
+  display: none; }
+
+.form_field_wrap {
+  position: relative; }
+
+.section {
+  position: relative;
+  font-size: 1rem; }
+
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/icons/iconfont.eot");
+  src: url("../fonts/icons/iconfont.eot?#iefix") format("eot"), url("../fonts/icons/iconfont.woff") format("woff"), url("../fonts/icons/iconfont.ttf") format("truetype"), url("../fonts/icons/iconfont.svg#iconfont") format("svg"); }
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor; }
+
+.icon-arrow_dwn_svg {
+  font-size: 12.9rem;
+  width: 1em; }
+
+.icon-arrow_r_svg {
+  font-size: 12.9rem;
+  width: 1em; }
+
+.icon-baby-1_svg {
+  font-size: 3.3rem;
+  width: 1em; }
+
+.icon-baby_svg {
+  font-size: 34.7rem;
+  width: 1em; }
+
+.icon-backpack_svg {
+  font-size: 64rem;
+  width: 1em; }
+
+.icon-bag_svg {
+  font-size: 48.9rem;
+  width: 1em; }
+
+.icon-basket_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-bear_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-cart2_svg {
+  font-size: 51.198rem;
+  width: 1em; }
+
+.icon-cart_svg {
+  font-size: 48.9rem;
+  width: 1em; }
+
+.icon-child_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-close_svg {
+  font-size: 51.2rem;
+  width: 0.625em; }
+
+.icon-compare_svg {
+  font-size: 3.3rem;
+  width: 1em; }
+
+.icon-grid_svg {
+  font-size: 2.4rem;
+  width: 1em; }
+
+.icon-heart_svg {
+  font-size: 5.2rem;
+  width: 1em; }
+
+.icon-law_svg {
+  font-size: 3.3rem;
+  width: 1em; }
+
+.icon-list_svg {
+  font-size: 2.4rem;
+  width: 1em; }
+
+.icon-menu_icon_svg {
+  font-size: 2.4rem;
+  width: 1em; }
+
+.icon-motherhood_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-napkin_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-next_svg {
+  font-size: 45.1847rem;
+  width: 0.9999977869em; }
+
+.icon-place_svg {
+  font-size: 43.011rem;
+  width: 1em; }
+
+.icon-prev_svg {
+  font-size: 45.1847rem;
+  width: 1em; }
+
+.icon-reload_svg {
+  font-size: 48.953rem;
+  width: 1em; }
+
+.icon-sale_svg {
+  font-size: 51.2rem;
+  width: 1em; }
+
+.icon-search_svg {
+  font-size: 3.0239rem;
+  width: 1em; }
+
+.icon-user_svg {
+  font-size: 56.343rem;
+  width: 1em; }
+
+.icon-woman_svg {
+  font-size: 47.26rem;
+  width: 1em; }
+
+/*# sourceMappingURL=main_global.css.map */
